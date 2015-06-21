@@ -7,7 +7,7 @@ db.text_factory = str
 cur = db.cursor()
 
 
-cur.execute(""" create table usertweet (
+cur.execute(""" create table usertimeline (
                 id integer,
                 name text,
                 tweet text)""")
@@ -20,8 +20,8 @@ timeline = csv.reader(fp)
 i = 0
 for row in timeline:
     i += 1
-    t = (i, row[0],row[1])
-    cur.execute("insert into usertweet values(?,?,?)",t)
+    t = (i, row[1],row[0])
+    cur.execute("insert into usertwimeline values(?,?,?)",t)
 
 db.commit()
 db.close()
