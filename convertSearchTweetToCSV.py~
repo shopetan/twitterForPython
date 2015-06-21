@@ -1,0 +1,47 @@
+#!/user/bin/env python
+# -*- coding: utf-8 -*-
+from requests_oauthlib import OAuth1Session
+import csv
+import json
+import sys, codecs
+
+
+
+search_words = raw_input(u"Keyword?:")
+
+C_KEY = '9lSLieZFThzknKihyqlEQ8nGe'                             # Consumer Key
+C_SECRET ='QHwBiL55Gg8RmiILeGdM0qQCAfe9JkLTgrdj1iSEXxxgKojtVV'
+A_KEY = '2758003602-WlcMGaX7qsEVkvmdFE3qaTxnyzNNUBxSWOZ7sfO'  # Access Token
+A_SECRET = 'lD2vxx5y8ejo4DvNwbydob2toxTAewLdidcXCeVs4BqrB'
+
+
+
+def Search_words():
+    url = "https://api.twitter.com/1.1/search/tweets.json?"
+    params = {
+        "q": unicode(search_words, "utf-8"),
+        "lang": "ja",
+        "result_type": "recent",
+        "count": "100"
+    }
+    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
+    req = tw.get(url, params = params)
+    tweets = json.loads(req.text)
+    
+    f = open("tweetsearch.csv" , "ab")
+    writer = csv.writer(f)
+    writer.writerow(["datetime", "id", "name", "text"])
+    for tweet in tweets["statuses"]:
+        time = (tweet["created_at"])
+        id = (tweet["user"]["screen_name"].encode("utf-8"))
+        name = (tweet["user"]["name"].encode("utf-8"))
+        text = (tweet["text"].encode("utf-8"))
+        
+        writer.writerow([time, id, name, text])
+        
+        f.close()
+        
+        return Search_words
+    
+Search_words()
+    
