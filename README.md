@@ -4,8 +4,8 @@ twitterをpythonで扱うためのサンプルを作ったので公開
 詳細はどちらも下記URLのモジュールからお願いします．  
 
 
-## Ouath
-Ouathモジュールを使ったpythonからtwitterAPIを叩くSample  
+## Oauth
+Oauthモジュールを使ったpythonからtwitterAPIを叩くSample  
 モジュールのLink:https://github.com/requests/requests-oauthlib  
 
 ## python-twitter
