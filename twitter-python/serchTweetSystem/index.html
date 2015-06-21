@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>tweet検索</title>
+  </head>
+  <body>
+    <h2>TimeLineから一致するtweetを取得します．</h2>
+    <p>tweet内容，もしくはユーザ名を分けて入力し、最後に「送信」ボタンを
+      クリックしてください。</p>
+    <form method="GET" action="serchtweet.cgi">
+      ツイートから検索: <input type="text" name="tweet" size="20"><br>
+      ユーザ名から検索: <input type="text" name="name" size="20"><br>
+      <input type="submit" value="送信">
+      <input type="reset" value="空にする">
+    </form>
+  </body>
+</html>
